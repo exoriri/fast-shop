@@ -1,0 +1,31 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/exoriri/shop",
+  "author": "Lavrik Roman",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run app & npm run server",
+    "server": "nodemon backend/server.js",
+    "app": "parcel frontend/src/index.html --open"
+  },
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^8.0.8",
+    "mongodb": "^3.5.3",
+    "nodemon": "^2.0.2",
+    "puppeteer": "^2.1.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.5"
+  }
+}
