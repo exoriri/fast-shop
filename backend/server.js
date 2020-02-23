@@ -1,15 +1,21 @@
-const Koa = require('koa');
+const connectDB = require('./database.ts');
 
-const router = require('./router');
-
-const app = new Koa();
-
+/* App configs */
 const PORT = process.env.port || 3000;
+const dbUrl = 'mongodb://localhost:27017';
+const dbName = 'shop';
 
-app
-    .use(router.routes())
-    .use(router.allowedMethods())
+connectDB(dbUrl, dbName, () => {
+    const Koa = require('koa');
+    const router = require('./router');
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${3000}`)
+    const app = new Koa();
+    
+    app
+        .use(router.routes())
+        .use(router.allowedMethods())
+
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${3000}`)
+    });
 });
