@@ -5,7 +5,7 @@ const connectDB = (url, dbName, cb) => {
         if (err) throw Error("Couldn't connect to DB server, check it");
         const db = client.db(dbName);
         console.log(`Connected to db on ${url}`)
-        cb();
+        cb(db);
     });
 };
 

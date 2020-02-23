@@ -10,7 +10,7 @@ connectDB(dbUrl, dbName, () => {
     const router = require('./router');
 
     const app = new Koa();
-    
+
     app
         .use(router.routes())
         .use(router.allowedMethods())
