@@ -1,11 +1,12 @@
-const connectDB = require('./database.ts');
+const connectDb = require('./databases/connectDb.ts');
 
 /* App configs */
-const PORT = process.env.port || 3000;
-const dbUrl = 'mongodb://localhost:27017';
-const dbName = 'shop';
+const configs = require('./configs');
+const { SERVER_PORT, mongo } = configs;
+const PORT = process.env.PORT || SERVER_PORT;
 
-connectDB(dbUrl, dbName, () => {
+
+connectDb(`${mongo.hostname}/${mongo.port}`, mongo.DB_NAME, () => {
     const Koa = require('koa');
     const router = require('./router');
 

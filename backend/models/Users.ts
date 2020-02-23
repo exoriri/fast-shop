@@ -1,7 +1,6 @@
-const Db = require('mongodb').Db;
-const Server = require('mongodb').Server;
-const server = new Server('mongodb://localhost', 27017)
-const db = new Db('shop', server);
+const database = require('../databases/database.ts');
+
+console.log(database);
 
 const Users = {
     create(db, data) {
