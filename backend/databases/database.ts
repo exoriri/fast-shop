@@ -6,6 +6,6 @@ const Server = require('mongodb').Server;
 const configs = require('../configs');
 const { mongo: { hostname, port, DB_NAME } } = configs;
 
-const server = new Server(hostname, port)
+const server = new Server(hostname, port);
 
 module.exports = new Db(DB_NAME, server);
