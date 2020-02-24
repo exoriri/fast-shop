@@ -1,12 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 
-interface IMongo {
-    db?: String
-}
+const Mongo = {};
 
-const Mongo: IMongo = {};
-
-const connectDB = (url, dbName, cb) => {
+const connectMongoDB = (url, dbName, cb) => {
     MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
         if (err) throw Error("Couldn't connect to DB server, check it");
         const db = client.db(dbName);
@@ -16,5 +12,7 @@ const connectDB = (url, dbName, cb) => {
     });
 };
 
-module.exports = {connectDB};
-module.exports = Mongo;
+module.exports = {
+    connectMongoDB,
+    Mongo
+};
