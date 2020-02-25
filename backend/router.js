@@ -32,4 +32,22 @@ router.post(
   }
 );
 
+router.post('/login', async (ctx, next) => {
+  passport.authenticate('login', (err, user, info) => {
+    if (err || !user) {
+      ctx.response.status = 400;
+      ctx.body = {
+        message: 'An Error occured'
+      }
+      console.log('Hey, here an error')
+    } else {
+      const body = { _id: user.id, email: user.email };
+
+      const token = jwt.sign({ user: body }, 'top_secret');
+
+      ctx.body = { token };
+    }
+  })(ctx, next);
+});
+
 module.exports = router;

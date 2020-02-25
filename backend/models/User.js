@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const databases = require('../databases');
 const collection = databases.Mongo.db.collection('users');
 
@@ -13,9 +15,10 @@ const findUser = (email) => {
 
 const insertUser = (email, password) => {
     return new Promise((res, rej) => {
-        collection.insertOne({ email, password }, (err, res) => {
+        collection.insertOne({ email, password }, (err, user) => {
             if (err) throw new Error(err);
             console.log('Document inserted');
+            res(user);
         });
     })
 }
@@ -26,6 +29,14 @@ const User = {
     
         if (existingUser) return `User with email ${email} already exists`;
         return await insertUser(email, password);
+    },
+
+    find(email) {
+        return findUser(email);
+    },
+
+    async isValidPassword(password, hash) {
+       return await bcrypt.compare(password, hash); 
     }
 }
 
