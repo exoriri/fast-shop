@@ -11,6 +11,7 @@
     "app": "parcel frontend/src/index.html --open"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.24.0",
     "@types/node": "^13.7.4",
     "bcrypt": "^4.0.0",
     "body-parser": "^1.19.0",
@@ -21,12 +22,14 @@
     "koa-router": "^8.0.8",
     "mongodb": "^3.5.3",
     "nodemon": "^2.0.2",
+    "normalize.css": "^8.0.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "puppeteer": "^2.1.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@types/react": "^16.9.19",
