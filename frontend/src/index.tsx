@@ -1,20 +1,15 @@
 /* Vendors */
-import * as React from 'react'
-import ReactDOM from 'react-dom';
+import * as React from "react";
+import ReactDOM from "react-dom";
 
-import Router from './Router';
+import Router from "./Router";
 
-import 'normalize.css';
+import "normalize.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
-import './styles.pcss';
+import "./styles.pcss";
 
-const App = () => (
-    <div>
-        <Router />
-    </div>
-);
+const App = () => <Router />;
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
-
