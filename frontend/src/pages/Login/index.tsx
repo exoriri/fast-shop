@@ -32,7 +32,7 @@ export const Login = () => (
           className="registration__input"
         />
       </div>
-      <Button className="registration__btn bp3-intent-primary">Log in</Button>
+      <Button className="registration__btn bp3-intent-primary">Sign in</Button>
       <Link className="registration__link" to="/signup">
         Don't have have an account?
       </Link>

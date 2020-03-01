@@ -6,3 +6,7 @@ export const signup = (email, password) => (
         password
     }).then(res => res)
 );
+
+export const getProducts = () => (
+    axios.get('http://127.0.0.1:3000/products').then(res => res)
+);
