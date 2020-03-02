@@ -17,9 +17,9 @@ const getProducts = async () => {
                 const fraction = item.querySelector('.a-price-fraction').innerText;
                 const price = `${symbol}/${wholePrice}/${fraction}`.replace('.','');
 
-                const descirption = item.querySelector('.a-size-base').innerText;
+                const description = item.querySelector('.a-size-base').innerText;
                 
-                return [...acc, { imgSrc, price, descirption}];
+                return [...acc, { imgSrc, price, description}];
             }, [])
         )
     );

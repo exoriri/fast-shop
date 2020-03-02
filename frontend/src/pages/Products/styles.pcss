@@ -1,0 +1,43 @@
+:local .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    background: #e8e8e8;
+    padding: 20px 5px;
+}
+
+:local .card {
+    border: none !important;
+
+    &:hover {
+        transform: scale(1.01);
+    }
+}
+
+:local .productBtn {
+    font-size: 36px;
+    padding: 10px 50px !important;
+}
+
+:local .loading {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    :local .wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :local .wrapper {
+        grid-template-columns: 1fr;
+    }
+}
