@@ -9,7 +9,7 @@ const router = new Router();
 
 router.get("/products", async ctx => {
   const products = await getProducts();
-  ctx.body = {products};
+  ctx.body = { products };
 });
 
 router.post(

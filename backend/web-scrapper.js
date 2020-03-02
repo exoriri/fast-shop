@@ -7,9 +7,22 @@ const getProducts = async () => {
 
     await page.goto(url); 
 
-    const products  = await page.evaluate(() => {
-        return document.querySelectorAll('.octopus-pc-item-block');
-    });
+    const products = await page.$$eval('.octopus-pc-item-block',
+        items => (
+            items.reduce((acc, item) => {
+                const imgSrc = item.querySelector('img').src;
+
+                const symbol = item.querySelector('.a-price-symbol').innerText;
+                const wholePrice = item.querySelector('.a-price-whole').innerText;
+                const fraction = item.querySelector('.a-price-fraction').innerText;
+                const price = `${symbol}/${wholePrice}/${fraction}`.replace('.','');
+
+                const descirption = item.querySelector('.a-size-base').innerText;
+                
+                return [...acc, { imgSrc, price, descirption}];
+            }, [])
+        )
+    );
 
     await browser.close();
     return products;
