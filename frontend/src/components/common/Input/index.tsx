@@ -1,5 +1,4 @@
 import React from "react";
-
 interface IInput {
   id?: string,
   type: string,
@@ -11,7 +10,7 @@ interface IInput {
 export const Input = ({
   id,
   type,
-  onChange= e => e,
+  onChange= () => {},
   className,
   placeholder
 }): React.FunctionComponentElement<IInput> => (

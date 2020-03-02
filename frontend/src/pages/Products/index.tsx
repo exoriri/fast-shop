@@ -1,23 +1,18 @@
 /* Vendors */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Card, Button } from '@blueprintjs/core';
 
-import { getProducts } from '../../api';
+import { getProducts } from '../../actions';
 
 import { Loader } from '../../components';
 
 import styles from './styles.pcss';
 
-export const Products = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-
+const Products = ({ items, getProducts, loading }) => {
+    console.log(items)
     useEffect(() => {
-            getProducts()
-                .then((res: any) => {
-                    setProducts(res.items);
-                    setLoading(false);
-                })
+        getProducts()
     },[]);
 
     if (loading) {
@@ -30,7 +25,7 @@ export const Products = () => {
 
     return (
         <div className={styles.wrapper}>
-            {products.map(product => (
+            {items.map(product => (
                 <Card className={styles.card}>
                     <img src={product.imgSrc} alt="product-description" />
                     <h3>{product.price.split('/').join('')}</h3>
@@ -43,3 +38,20 @@ export const Products = () => {
         </div>
     );
 };
+
+const mapStateToProps = ({ products }) => {
+    const { items, loading } = products;
+
+    return {
+        items,
+        loading
+    }
+};
+
+const actionsCreators = {
+    getProducts
+}
+
+const connectedProducts = connect(mapStateToProps, actionsCreators)(Products);
+
+export { connectedProducts as Products };
