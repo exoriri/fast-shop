@@ -27,7 +27,7 @@ export const Login = () => (
         </label>
         <input
           type="password"
-          id="email"
+          id="password"
           placeholder="Enter your password here"
           className="registration__input"
         />

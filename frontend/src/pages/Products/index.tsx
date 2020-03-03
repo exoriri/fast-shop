@@ -1,14 +1,18 @@
 /* Vendors */
 import React, { useState, useEffect } from 'react';
+import { observer } from 'mobx-react';
 import { Card, Button } from '@blueprintjs/core';
 
 import { getProducts } from '../../api';
+import { useStore } from '../../store';
 
-import { Loader } from '../../components';
+import { Loader, Header } from '../../components';
 
 import styles from './styles.pcss';
 
 export const Products = () => {
+    const { saveProduct } = useStore();
+    
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -22,24 +26,36 @@ export const Products = () => {
 
     if (loading) {
         return (
-            <div className={styles.loading}>
-                <Loader />
-            </div>
+            <>
+                <Header />
+                <div className={styles.loading}>
+                    <Loader />
+                </div>
+            </>
         );
     }
 
     return (
+        <>
+        <Header />
         <div className={styles.wrapper}>
             {products.map(product => (
                 <Card className={styles.card}>
                     <img src={product.imgSrc} alt="product-description" />
                     <h3>{product.price.split('/').join('')}</h3>
                     <p>{product.description}</p>
-                    <Button className={`${styles.productBtn} bp3-intent-primary`}>
+                    <Button 
+                        className={`${styles.productBtn} bp3-intent-primary`}
+                        onClick={(e) => {
+                            saveProduct(product);
+                            e.target.innerHTML = 'Added'
+                        }}
+                    >
                         Add to cart
                     </Button>
                 </Card>
             ))}
         </div>
+        </>
     );
 };

@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const Form = ({ children, className }) => (
+interface IForm {
+    className?: string;
+}
+
+export const Form = ({ children, className }): React.FunctionComponentElement<IForm> => (
     <form className={className}>
         { children }
     </form>
