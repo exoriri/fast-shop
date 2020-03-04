@@ -1,4 +1,8 @@
+/* Vendors */
 const puppeteer = require('puppeteer');
+
+const Product = require('./models/Product');
+
 const url = 'https://www.amazon.co.uk/s/ref=lp_428655031_nr_n_2?fst=as%3Aoff&rh=n%3A340831031%2Cn%3A%21340832031%2Cn%3A428655031%2Cn%3A430546031&bbn=428655031&ie=UTF8&qid=1583004042&rnid=428655031';
 
 const getProducts = async () => {
@@ -9,7 +13,7 @@ const getProducts = async () => {
 
     const products = await page.$$eval('.octopus-pc-item-block',
         items => (
-            items.reduce((acc, item) => {
+            items.reduce(async (acc, item) => {
                 const imgSrc = item.querySelector('img').src;
 
                 const symbol = item.querySelector('.a-price-symbol').innerText;
@@ -19,7 +23,16 @@ const getProducts = async () => {
 
                 const description = item.querySelector('.a-size-base').innerText;
                 
-                return [...acc, { imgSrc, price, description}];
+                const productObj = {
+                    imgSrc,
+                    price,
+                    description,
+                    count: 1
+                };
+
+                const product = await Product.create(productObj);
+
+                return [...acc, product];
             }, [])
         )
     );
@@ -28,4 +41,4 @@ const getProducts = async () => {
     return products;
 };
 
-module.exports = getProducts;
+getProducts();

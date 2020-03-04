@@ -1,5 +1,4 @@
-import { observable } from 'mobx';
-import { toJS } from 'mobx';
+import { observable, toJS, ObservableMap } from 'mobx';
 
 class Store {
     @observable savedProducts = [];
@@ -9,6 +8,6 @@ class Store {
     }
 }
 
-export const store = toJS(new Store);
+export const store = new Store;
 
 export * from './Provider';

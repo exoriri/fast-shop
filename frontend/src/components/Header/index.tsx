@@ -1,5 +1,6 @@
 /* Vendors */
 import React from 'react';
+import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@blueprintjs/core';
 
@@ -9,9 +10,9 @@ import { useStore } from '../../store';
 
 import styles from './styles.pcss';
 
-export const Header = () => {
-    const store = useStore();
-    console.log(store)
+export const Header = observer(() => {
+    const { savedProducts } = useStore();
+
     return <header className={styles.header}>
         <div className={styles.left}>
             <Link to="/home">
@@ -32,6 +33,7 @@ export const Header = () => {
                 </li>
                 <li className={styles.listItem}>
                     <Icon icon="shopping-cart" iconSize={30} color="#fff" />
+                    <p>{savedProducts && savedProducts.length}</p>
                 </li>
                 <li className={styles.listItem}>
                     <Link className={styles.login} to="/login">Login</Link>
@@ -39,4 +41,4 @@ export const Header = () => {
             </List>
         </div>
     </header>
-};
+});

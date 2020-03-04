@@ -1,6 +1,5 @@
 /* Vendors */
 import React, { useState, useEffect } from 'react';
-import { observer } from 'mobx-react';
 import { Card, Button } from '@blueprintjs/core';
 
 import { getProducts } from '../../api';
@@ -11,8 +10,8 @@ import { Loader, Header } from '../../components';
 import styles from './styles.pcss';
 
 export const Products = () => {
-    const { saveProduct } = useStore();
-    
+    const store = useStore();
+
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -47,7 +46,7 @@ export const Products = () => {
                     <Button 
                         className={`${styles.productBtn} bp3-intent-primary`}
                         onClick={(e) => {
-                            saveProduct(product);
+                            store.saveProduct(product);
                             e.target.innerHTML = 'Added'
                         }}
                     >
