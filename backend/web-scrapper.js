@@ -1,11 +1,14 @@
 /* Vendors */
 const puppeteer = require('puppeteer');
 
-const Product = require('./models/Product');
+const { connectMongoDB } = require('./databases').Mongo;
+const configs = require('./configs');
+const { hostname, port, DB_NAME } = configs.mongo;
 
 const url = 'https://www.amazon.co.uk/s/ref=lp_428655031_nr_n_2?fst=as%3Aoff&rh=n%3A340831031%2Cn%3A%21340832031%2Cn%3A428655031%2Cn%3A430546031&bbn=428655031&ie=UTF8&qid=1583004042&rnid=428655031';
 
 const getProducts = async () => {
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -13,7 +16,7 @@ const getProducts = async () => {
 
     const products = await page.$$eval('.octopus-pc-item-block',
         items => (
-            items.reduce(async (acc, item) => {
+            items.reduce((acc, item) => {
                 const imgSrc = item.querySelector('img').src;
 
                 const symbol = item.querySelector('.a-price-symbol').innerText;
@@ -23,16 +26,14 @@ const getProducts = async () => {
 
                 const description = item.querySelector('.a-size-base').innerText;
                 
-                const productObj = {
+                const product = {
                     imgSrc,
                     price,
                     description,
                     count: 1
                 };
-
-                const product = await Product.create(productObj);
-
-                return [...acc, product];
+                
+                return [...acc, product]
             }, [])
         )
     );
@@ -41,4 +42,13 @@ const getProducts = async () => {
     return products;
 };
 
-getProducts();
+connectMongoDB(`${hostname}/${port}`, DB_NAME, async () => {
+    const Product = require('./models/Product');
+    const products = await getProducts();
+
+    (async () => {
+        for(let i = 0; i < products.length; i++) {
+            await Product.create(products[i]);
+        }
+    })();
+});

@@ -5,8 +5,7 @@ const cors = require('@koa/cors');
 
 /* Application modules */
 const databases = require('./databases');
-const { connectMongoDB } = databases;
-const router = require('./router');
+const { connectMongoDB } = databases.Mongo;
 
 /* App configs */
 const configs = require('./configs');
@@ -15,6 +14,8 @@ const PORT = process.env.PORT || SERVER_PORT;
 
 
 connectMongoDB(`${mongo.hostname}/${mongo.port}`, mongo.DB_NAME, (db) => {
+    // Router declares here because there is models which depends on db connection
+    const router = require('./router');
 
     const app = new Koa();
     app.context.db = db;

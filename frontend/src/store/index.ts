@@ -1,4 +1,4 @@
-import { observable, toJS, ObservableMap } from 'mobx';
+import { observable } from 'mobx';
 
 class Store {
     @observable savedProducts = [];
