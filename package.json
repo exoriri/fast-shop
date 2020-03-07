@@ -6,7 +6,6 @@
   "author": "Lavrik Roman",
   "license": "MIT",
   "scripts": {
-    "start": "npm run app & npm run server",
     "server": "nodemon backend/server.js",
     "scrapper": "node backend/web-scrapper.js",
     "front": "parcel frontend/src/index.html --open",
