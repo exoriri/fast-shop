@@ -23,6 +23,15 @@ export const Products = () => {
                 })
     },[]);
 
+    const addProduct = (e, product) => {
+        store.saveProduct(product);
+        if (e.target.innerText === 'Add to cart') {
+            e.target.innerText = 'Remove from cart';
+        } else if (e.target.innerText === 'Remove from cart') {
+            e.target.innerText = 'Add to cart';
+        }
+    };
+
     if (loading) {
         return (
             <>
@@ -42,13 +51,10 @@ export const Products = () => {
                 <Card className={styles.card}>
                     <img src={product.imgSrc} alt="product-description" />
                     <h3>{product.price.split('/').join('')}</h3>
-                    <p>{product.description}</p>
+                    <p style={{ marginBottom: '20px' }}>{product.description}</p>
                     <Button 
                         className={`${styles.productBtn} bp3-intent-primary`}
-                        onClick={(e) => {
-                            store.saveProduct(product);
-                            e.target.innerHTML = 'Added'
-                        }}
+                        onClick={e => addProduct(e, product)}
                     >
                         Add to cart
                     </Button>

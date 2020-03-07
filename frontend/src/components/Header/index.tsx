@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@blueprintjs/core';
 
-import { List, Input, Form } from '../index';
+import { List, Input, Form, Badge } from '../index';
 
 import { useStore } from '../../store';
 
@@ -31,9 +31,18 @@ export const Header = observer(() => {
                         />
                     </Form>
                 </li>
-                <li className={styles.listItem}>
+                <li className={`${styles.listItem} ${styles.listItem__badged}`}>
                     <Icon icon="shopping-cart" iconSize={30} color="#fff" />
-                    <p>{savedProducts && savedProducts.length}</p>
+                    {savedProducts.length !== 0 && ( 
+                        <Badge 
+                            size="sm" 
+                            color="red" 
+                            className={`${styles.badge} 
+                            `}
+                        >
+                            <p className={styles.badge__label}>{savedProducts.length}</p>
+                        </Badge>)
+                    }
                 </li>
                 <li className={styles.listItem}>
                     <Link className={styles.login} to="/login">Login</Link>

@@ -4,7 +4,17 @@ class Store {
     @observable savedProducts = [];
 
     saveProduct(item) {
-        this.savedProducts.push(item);
+        let foundIndex;
+        const existingProduct = this.savedProducts.find((product, index) => {
+            foundIndex = index;
+            return product._id === item._id;
+        });
+
+        if (existingProduct) {
+            this.savedProducts.splice(foundIndex, 1);
+        } else {
+            this.savedProducts.push(item);
+        }
     }
 }
 
