@@ -11,7 +11,7 @@ const { connectMongoDB } = databases.Mongo;
 const configs = require('./configs');
 const { SERVER_PORT, mongo } = configs;
 const PORT = process.env.PORT || SERVER_PORT;
-const MONGO_URI = process.env.MONGODB_URI `${mongo.hostname}/${mongo.port}`;
+const MONGO_URI = process.env.MONGODB_URI || `${mongo.hostname}/${mongo.port}`;
 
 connectMongoDB(MONGO_URI, mongo.DB_NAME, (db) => {
     // Router declares here because there is models which depends on db connection
