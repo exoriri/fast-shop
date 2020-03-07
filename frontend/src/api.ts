@@ -11,5 +11,5 @@ export const signup = (email, password) => (
 );
 
 export const getProducts = () => (
-    axios.get(`${url}/products`).then(res => res.data)
+    axios.get(`${url}products`).then(res => res.data)
 );
