@@ -3,12 +3,12 @@ const Router = require("koa-router");
 const passport = require("koa-passport");
 const jwt = require("jsonwebtoken");
 
-const getProducts = require('./web-scrapper');
+const Product = require('./models/Product');
 
 const router = new Router();
 
 router.get("/products", async ctx => {
-  const products = await getProducts();
+  const products = await Product.get();
   ctx.body = { items: products };
 });
 

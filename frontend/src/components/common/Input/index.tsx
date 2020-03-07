@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from './styles.pcss';
+
 interface IInput {
   id?: string,
   type: string,
@@ -20,6 +22,6 @@ export const Input = ({
     type={type}
     onChange={onChange}
     placeholder={placeholder}
-    className={className}
+    className={`${className} ${styles.input}`}
   />
 );

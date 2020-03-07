@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 /* Application modules */
 const databases = require("../../databases");
 const UserModel = require("../../models/User");
+const ProductModel = require("../../models/Product");
 
 const db = databases.Mongo.db;
 const salt = 10;
@@ -65,7 +66,6 @@ passport.use('jwt', new jwtStrategy(
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
   },
   async (jwt_payload, done) => {
-    console.log('sdf')
     try {
       return done(null, jwt_payload.user)
     } catch (err) {

@@ -12,7 +12,8 @@ const connectMongoDB = (url, dbName, cb) => {
     });
 };
 
+Mongo.connectMongoDB = connectMongoDB;
+
 module.exports = {
-    connectMongoDB,
     Mongo
 };

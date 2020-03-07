@@ -5,16 +5,18 @@ const collection = databases.Mongo.db.collection('users');
 
 // TODO make some function to handle all requests like promise
 const findUser = (email) => {
-    return new Promise((res, rej) => {
+    return new Promise(res => {
         collection.findOne({ email }, (err, user) => {
-            if (err) throw Error(err);
+            if (err) {
+                throw Error(err)
+            };
             res(user);
         })
     })
 };
 
 const insertUser = (email, password) => {
-    return new Promise((res, rej) => {
+    return new Promise(res => {
         collection.insertOne({ email, password }, (err, user) => {
             if (err) throw new Error(err);
             console.log('Document inserted');

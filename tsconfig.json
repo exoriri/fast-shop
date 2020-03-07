@@ -3,15 +3,14 @@
         "target": "es5",
         "module": "es2015",
         "jsx": "react",
+        "sourceMap": true,
         "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
         "moduleResolution": "node",
         "lib": [
             "dom",
             "es5",
             "es6"
         ]
-    },
-    "include": [
-        "src/**/*"
-    ]
+    }
 }

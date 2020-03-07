@@ -1,3 +1,17 @@
+:local .badge {
+    position: absolute;
+    top: -12px;
+    right: -4px;
+    animation: pulse .5s 1;
+    width: 22px;
+    height: 22px;
+
+    &__label {
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
 :local .header {
     display: flex;
     align-items: center;
@@ -12,8 +26,37 @@
 :local .listItem {
     display: inline-block;
     margin-right: 20px;
+
+    &__badged {
+        position: relative;
+    }
 }
 
 :local .login {
     color: #fff;
+}
+
+:local .rightList {
+    display: flex;
+    align-items: center;
+}
+
+:local .searchForm {
+    background: #fff !important;
+    padding: 7px 10px;
+}
+
+:local .search {
+    background: #fff;
+    z-index: 999;
+    font-size: 16px;
+
+    &:focus { 
+        outline: 1px #fff solid;
+    }
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  20% {transform: scale(1.5); }
 }
