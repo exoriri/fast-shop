@@ -14,7 +14,7 @@ const PORT = process.env.PORT || SERVER_PORT;
 const MONGO_URI = process.env.MONGODB_URI || `${mongo.hostname}/${mongo.port}`;
 
 connectMongoDB(MONGO_URI, mongo.DB_NAME, (db) => {
-    // Router declares here because there is models which depends on db connection
+    // Router declares here because there is models which depends on db connection 
     const router = require('./router');
 
     const app = new Koa();
