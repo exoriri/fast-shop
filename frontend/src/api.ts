@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const url = process.env.NODE_ENV = 'developement' ? 'http://127.0.0.1:3000/' : 'https://afternoon-inlet-00968.herokuapp.com/';
+const url = process.env.NODE_ENV === 'developement' ? 
+    'http://127.0.0.1:3000/' : 'https://afternoon-inlet-00968.herokuapp.com/';
 
 export const signup = (email, password) => (
     axios.post('/signup', {
@@ -10,5 +11,5 @@ export const signup = (email, password) => (
 );
 
 export const getProducts = () => (
-    axios.get('http://127.0.0.1:3000/products').then(res => res.data)
+    axios.get(`${url}/products`).then(res => res.data)
 );

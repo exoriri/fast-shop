@@ -9,7 +9,7 @@
     "server": "nodemon backend/server.js",
     "scrapper": "node backend/web-scrapper.js",
     "front": "parcel frontend/src/index.html --open",
-    "build-front": "NODE_ENV=production parcel build frontend/src/index.html --public-url /fast-shop/",
+    "build-front": "parcel build frontend/src/index.html --public-url /fast-shop/",
     "deploy-front": "gh-pages -d dist"
   },
   "dependencies": {
