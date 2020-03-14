@@ -50,6 +50,7 @@
     background: #fff;
     z-index: 999;
     font-size: 16px;
+    border: none;
 
     &:focus { 
         outline: 1px #fff solid;
@@ -59,4 +60,19 @@
 @keyframes pulse {
   0% {transform: scale(1);}
   20% {transform: scale(1.5); }
+}
+
+@media screen and (max-width: 400px) {
+    :local .right {
+        margin-left: 0 !important;
+    }
+
+    :local .rightList {
+        margin-left: 0;
+        padding-left: 10px;
+    }
+
+    :local .search {
+        width: 120px
+    }
 }
