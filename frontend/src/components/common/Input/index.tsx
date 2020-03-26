@@ -5,6 +5,7 @@ import styles from './styles.pcss';
 interface IInput {
   id?: string,
   type: string,
+  value: string,
   className?: string,
   placeholder?: string,
   onChange?: () => void
@@ -13,6 +14,7 @@ interface IInput {
 export const Input = ({
   id,
   type,
+  value,
   onChange= e => e,
   className,
   placeholder
@@ -20,6 +22,7 @@ export const Input = ({
   <input
     id={id}
     type={type}
+    value={value}
     onChange={onChange}
     placeholder={placeholder}
     className={`${className} ${styles.input}`}

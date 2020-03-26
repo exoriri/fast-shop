@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { observer } from 'mobx-react';
 
 const MobxContext = React.createContext(null);
 

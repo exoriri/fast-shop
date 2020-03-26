@@ -15,9 +15,10 @@ const findUser = (email) => {
     })
 };
 
-const insertUser = (email, password) => {
+const insertUser = (firstName, lastName, email, password) => {
     return new Promise(res => {
-        collection.insertOne({ email, password }, (err, user) => {
+        collection.insertOne({ firstName, lastName, email, password }, (err, user) => {
+            console.log(user)
             if (err) throw new Error(err);
             console.log('Document inserted');
             res(user);
@@ -26,11 +27,11 @@ const insertUser = (email, password) => {
 }
 
 const User = {
-    async create({ email, password }) {
+    async create({ firstName, lastName, email, password }) {
         const existingUser = await findUser(email);
     
         if (existingUser) return `User with email ${email} already exists`;
-        return await insertUser(email, password);
+        return await insertUser(firstName, lastName, email, password);
     },
 
     find(email) {

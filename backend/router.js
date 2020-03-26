@@ -2,10 +2,14 @@
 const Router = require("koa-router");
 const passport = require("koa-passport");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const Product = require('./models/Product');
+const User = require('./models/User');
 
 const router = new Router();
+
+const salt = 10;
 
 router.get("/products", async ctx => {
   const products = await Product.get();
@@ -15,28 +19,32 @@ router.get("/products", async ctx => {
 router.post(
   "/signup",
   async (ctx, next) => {
-    passport.authenticate("signup", { session: false }, async (err, res) => {
-      if (err) throw Error(err);
-      const userOrMessage = await res;
-      if (typeof userOrMessage === 'string') {
-        ctx.response.status = 303;
-        ctx.body = {
-          message: userOrMessage
-        }
+    const { firstName, lastName, email, password } = ctx.request.body;
+    try {
+      const hash = await bcrypt.hash(password, salt);
+      const user = await User.create({firstName, lastName, email, password: hash });
+
+      if (typeof user === 'string') {
+        throw new Error(user);
       } else {
         ctx.response.status = 200;
+        ctx.type = 'application/json; charset=utf-8';
         ctx.body = {
           message: 'Пользователь успешно создан'
         };
-        console.log('Пользователь успешно создан');
         next();
       }
-    })(ctx, next)
+    } catch (err) {
+      ctx.response.status = 400;
+      ctx.body = {
+        message: err.message
+      }
+    }
   }
 );
 
 router.post('/login', async (ctx, next) => {
-  passport.authenticate('login', (err, user, info) => {
+ await passport.authenticate('login', (err, user) => {
     if (err || !user) {
       ctx.response.status = 400;
       ctx.body = {

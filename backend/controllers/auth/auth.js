@@ -6,31 +6,7 @@ const ExtractJwt = require("passport-jwt").ExtractJwt;
 const bcrypt = require("bcrypt");
 
 /* Application modules */
-const databases = require("../../databases");
 const UserModel = require("../../models/User");
-const ProductModel = require("../../models/Product");
-
-const db = databases.Mongo.db;
-const salt = 10;
-
-passport.use(
-  "signup",
-  new localStrategy(
-    {
-      usernameField: "email",
-      passwordField: "password"
-    },
-    async (email, password, done) => {
-      try {
-        const hash = await bcrypt.hash(password, salt);
-        const user = UserModel.create({ email, password: hash, db });
-        return done(null, user);
-      } catch (err) {
-        return done(err);
-      }
-    }
-  )
-);
 
 passport.use(
   "login",
