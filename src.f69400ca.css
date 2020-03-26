@@ -33,6 +33,7 @@
         padding: 7px;
         width: 100%;
         margin-top: 5px;
+        border: 1px solid;
     }
 
     .registration__input:focus {
@@ -60,26 +61,27 @@
         .registration__form {
             width: 99%;
         }
+    
 }
-._input_e79b6 {
+._input_8d565 {
     display: block;
 }
     
-    ._input_e79b6:focus {
+    ._input_8d565:focus {
         outline-color: none;
     }
-._loader_4d2c0 {
+._loader_1fe1f {
     border: 10px solid #f3f3f3;
     border-top: 10px solid red;
     border-bottom: 10px solid blue;
     border-radius: 50%;
     width: 70px;
     height: 70px;
-    -webkit-animation: _spin_4d2c0 1s linear infinite;
-            animation: _spin_4d2c0 1s linear infinite;
+    -webkit-animation: _spin_1fe1f 1s linear infinite;
+            animation: _spin_1fe1f 1s linear infinite;
 }
 
-@-webkit-keyframes _spin_4d2c0 {
+@-webkit-keyframes _spin_1fe1f {
     0% {
         transform: rotate(0deg);
     }
@@ -88,7 +90,7 @@
     }
 }
 
-@keyframes _spin_4d2c0 {
+@keyframes _spin_1fe1f {
     0% {
         transform: rotate(0deg);
     }
@@ -96,108 +98,124 @@
         transform: rotate(360deg);
     }
 }
-._list_87d15 {
+._list_c81f9 {
     list-style: none;
 }
-._badge_8aa17 {
+._badge_13c71 {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-._red_8aa17 {
+._red_13c71 {
     background: red;
     color: #fff;
     font-weight: 500;
 }
 
-._rounded_8aa17 {
+._rounded_13c71 {
     border-radius: 50%;
 }
 
-._sm_8aa17 {
+._sm_13c71 {
     width: 16px;
     height: 16px;
 }
 
-._md_8aa17 {
+._md_13c71 {
     width: 24px;
     height: 24px;
 }
 
-._lg_8aa17 {
+._lg_13c71 {
     width: 32px;
     height: 32px;
 }
-._badge_1fdf8 {
+._badge_7d522 {
     position: absolute;
     top: -12px;
     right: -4px;
-    -webkit-animation: _pulse_1fdf8 .5s 1;
-            animation: _pulse_1fdf8 .5s 1;
+    -webkit-animation: _pulse_7d522 .5s 1;
+            animation: _pulse_7d522 .5s 1;
     width: 22px;
     height: 22px;
 }
 
-    ._badge__label_1fdf8 {
+    ._badge__label_7d522 {
         margin: 0;
         font-size: 14px;
     }
 
-._header_1fdf8 {
+._header_7d522 {
     display: flex;
     align-items: center;
     padding: 5px;
     background: #D68C15;
 }
 
-._right_1fdf8 {
+._right_7d522 {
     margin-left: auto;
 }
 
-._listItem_1fdf8 {
+._listItem_7d522 {
     display: inline-block;
     margin-right: 20px;
 }
 
-._listItem__badged_1fdf8 {
+._listItem__badged_7d522 {
         position: relative;
     }
 
-._login_1fdf8 {
+._login_7d522 {
     color: #fff;
 }
 
-._rightList_1fdf8 {
+._rightList_7d522 {
     display: flex;
     align-items: center;
 }
 
-._searchForm_1fdf8 {
+._searchForm_7d522 {
     background: #fff !important;
     padding: 7px 10px;
 }
 
-._search_1fdf8 {
+._search_7d522 {
     background: #fff;
     z-index: 999;
     font-size: 16px;
+    border: none;
 }
 
-._search_1fdf8:focus { 
+._search_7d522:focus { 
         outline: 1px #fff solid;
     }
 
-@-webkit-keyframes _pulse_1fdf8 {
+@-webkit-keyframes _pulse_7d522 {
   0% {transform: scale(1);}
   20% {transform: scale(1.5); }
 }
 
-@keyframes _pulse_1fdf8 {
+@keyframes _pulse_7d522 {
   0% {transform: scale(1);}
   20% {transform: scale(1.5); }
 }
-._wrapper_6e25e {
+
+@media screen and (max-width: 400px) {
+    ._right_7d522 {
+        margin-left: 0 !important;
+    }
+
+    ._rightList_7d522 {
+        margin-left: 0;
+        padding-left: 10px;
+    }
+
+    ._search_7d522 {
+        width: 120px
+    }
+}
+._wrapper_cb268 {
     display: grid;
     position: relative;
     grid-template-columns: 1fr 1fr 1fr;
@@ -207,21 +225,21 @@
     padding: 20px 5px;
 }
 
-._card_6e25e {
+._card_cb268 {
     border: none !important;
 }
 
-._card_6e25e:hover {
+._card_cb268:hover {
         transform: scale(1.01);
     }
 
-._productBtn_6e25e {
+._productBtn_cb268 {
     margin-top: auto;
     font-size: 36px;
     padding: 10px 50px !important;
 }
 
-._loading_6e25e {
+._loading_cb268 {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -232,13 +250,13 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    ._wrapper_6e25e {
+    ._wrapper_cb268 {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media screen and (max-width: 768px) {
-    ._wrapper_6e25e {
+    ._wrapper_cb268 {
         grid-template-columns: 1fr;
     }
 }
