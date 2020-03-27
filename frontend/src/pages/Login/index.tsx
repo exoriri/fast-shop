@@ -1,6 +1,6 @@
 /* Vendors */
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Button } from "@blueprintjs/core";
 
 /* services */
@@ -15,6 +15,7 @@ export const Login = () => {
     password: ''
   });
   const [isLoading, setLoading] = useState(false);
+  const history = useHistory();
 
   const handleChange = e => {
     setFields({ ...fields, [e.target.id]: e.target.value });
@@ -26,9 +27,10 @@ export const Login = () => {
     setLoading(true);
     const { email, password } = fields;
     signin({ email, password })
-      .then(data => {
+      .then(({ token }) => {
         setLoading(false);
-        console.log(data);
+        localStorage.setItem('token', token);
+        history.push('/dashboard');
       })
       .catch(e => {
         setLoading(false);
