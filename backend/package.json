@@ -1,0 +1,29 @@
+{
+  "name": "backend-fast-shop",
+  "version": "1.0.0",
+  "description": "shop using modern technology",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Lavrik Roman",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.0.0",
+    "bcrypt": "^4.0.1",
+    "graphql": "^14.6.0",
+    "graphql-import": "^1.0.1",
+    "graphql-import-node": "0.0.4",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-graphql": "^0.8.0",
+    "koa-passport": "^4.1.3",
+    "koa-router": "^8.0.8",
+    "mongodb": "^3.5.5",
+    "nodemon": "^2.0.2",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "puppeteer": "^2.1.1"
+  }
+}
