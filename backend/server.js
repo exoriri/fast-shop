@@ -1,6 +1,5 @@
 /* Vendorss */
 const Koa = require('koa');
-const graphqlHTTP = require('koa-graphql');
 const bodyParser = require('koa-bodyparser');
 const cors = require('@koa/cors');
 
@@ -13,7 +12,6 @@ const configs = require('./configs');
 const { SERVER_PORT, mongo } = configs;
 const PORT = process.env.PORT || SERVER_PORT;
 const MONGO_URI = process.env.MONGODB_URI || `${mongo.hostname}/${mongo.port}`;
-const Schema = require('./schema');
 
 connectMongoDB(MONGO_URI, mongo.DB_NAME, (db) => {
     // Router declares here because there is models which depends on db connection 
@@ -26,10 +24,6 @@ connectMongoDB(MONGO_URI, mongo.DB_NAME, (db) => {
     console.log(db)
     app.use(bodyParser());
     app.use(cors());
-    // app.use('/graphql', graphqlHTTP({
-    //     schema: Schema,
-    //     graphiql: true
-    // }));
     app
         .use(router.routes())
         .use(router.allowedMethods())

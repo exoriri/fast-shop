@@ -25,7 +25,7 @@ const getProducts = async () => {
                 const price = `${symbol}/${wholePrice}/${fraction}`.replace('.','');
 
                 const description = item.querySelector('.a-size-base').innerText;
-                
+                console.log(item)
                 const product = {
                     imgSrc,
                     price,
@@ -49,6 +49,7 @@ connectMongoDB(`${hostname}/${port}`, DB_NAME, async () => {
     (async () => {
         for(let i = 0; i < products.length; i++) {
             await Product.create(products[i]);
+            console.log(i)
         }
     })();
 });

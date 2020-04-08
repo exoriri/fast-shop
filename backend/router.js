@@ -1,15 +1,23 @@
 /* Vendors */
 const Router = require("koa-router");
 const passport = require("koa-passport");
+const graphqlHTTP = require('koa-graphql');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const Product = require('./models/Product');
 const User = require('./models/User');
 
+const Schema = require('./schema');
+
 const router = new Router();
 
 const salt = 10;
+
+router.all('/graphql', graphqlHTTP({
+  schema: Schema,
+  graphiql: true
+}))
 
 router.get("/products", async ctx => {
   const products = await Product.get();

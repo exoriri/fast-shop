@@ -6,11 +6,11 @@ const Product = require('../models/Product');
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     description: 'application query root',
-    fields: async () => ({
+    fields: () => ({
         products: {
             type: new GraphQLList(ProductType),
             description: 'List of products',
-            resolve: () => ([])
+            resolve: async () => await Product.get()
         }
     })
 });
