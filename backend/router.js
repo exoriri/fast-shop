@@ -7,10 +7,6 @@ const bcrypt = require("bcrypt");
 const Product = require('./models/Product');
 const User = require('./models/User');
 
-const productSchema = require('./schemas');
-
-console.log(productSchema);
-
 const router = new Router();
 
 const salt = 10;
